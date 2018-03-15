@@ -1,0 +1,37 @@
+# network setup
+network:
+  # global config
+  num_stages: &numstages !!int 5
+  # padding
+  pad: 9
+  # convolution
+  num_filter: &numfilter !!int 24
+  filter_size: &filtersize !!int 5
+  # activation
+  num_weights: &numweights !!int 31
+  vmin: &vmin !!float -0.25
+  vmax: &vmax !!float 0.25
+  # datatermweight
+  learn_datatermweight: !!bool True
+  datatermweight_init: 0.1
+
+# regularizer setup
+reg:
+  activation1:
+      name: w1
+      num_stages: *numstages
+      num_weights: *numweights
+      num_filter: *numfilter
+      vmin: *vmin
+      vmax: *vmax
+      init_type: linear
+      init_scale: 0.04
+
+  filter1:
+      name: k1
+      num_stages: *numstages
+      features_in: 1
+      features_out: *numfilter
+      filter_size: *filtersize
+      prox_zero_mean: !!bool True
+      prox_norm: !!bool True

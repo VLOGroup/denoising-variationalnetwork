@@ -1,0 +1,15 @@
+# training data setup
+data_config:
+  train_dir: data/train/
+  val_dir: data/test/
+
+  # noise level
+  sigma: 25
+
+  batch_size: 50
+  # patch size
+  H: 120
+  W: 120
+  # patch size of validation set (10 imgs)
+  valH: 120
+  valW: 120
